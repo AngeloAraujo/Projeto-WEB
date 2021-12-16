@@ -1,7 +1,7 @@
 <?php
     // Banco de Dados
     define('HOST', 'localhost');  
-    define('DBNAME', 'poo');    
+    define('DBNAME', 'devweb');    
     define('USER', 'root');  
     define('PASSWORD', '97385153');
 

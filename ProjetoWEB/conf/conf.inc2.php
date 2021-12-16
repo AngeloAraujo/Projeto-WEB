@@ -4,7 +4,7 @@
 	
 	// Banco de Dados para configuração
 	$url = "localhost";     // IP do host
-	$dbname="poo";          // Nome do database
+	$dbname="devweb";          // Nome do database
 	$usuario="root";        // Usuário do database
 	$password="97385153";           // Senha do database
 	

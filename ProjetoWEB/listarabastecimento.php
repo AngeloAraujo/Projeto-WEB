@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Lista de Operações</title>
     <html lang="pt-br">
     <script>
@@ -46,13 +47,28 @@ $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "3";
 $procurar = isset($_POST['procurar']) ? $_POST['procurar'] : "";
 ?>
 <body>
-    <a href="cadabastecimento.php">Novo Abastecimento</a>
     <form method="post">
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Abastecimentos</h5></div>
+                    <div class="modal-body">
+
+        <div class="form-group">Consultar <br>
     <input type="radio" name="tipo" id="tipo" value="1" <?php if ($tipo == 1) { echo "checked"; }?>>Abastecimento<br>  
     <input type="radio" name="tipo" id="tipo" value="2" <?php if ($tipo == 2) { echo "checked"; }?>>Placa<br>
     <input type="radio" name="tipo" id="tipo" value="3" <?php if ($tipo == 3) { echo "checked"; }?>>Listar todos os Abastecimentos<br>
-    <input type="text" name="procurar" id="procurar" value="<?php echo $procurar; ?>">
-    <input type="submit" value="Consultar">
+ 
+        <input type="text" name="procurar" id="procurar" value="<?php echo $procurar; ?>">
+        <input class="btn btn-outline-warning bt-xs"  type="submit" value="Consultar">
+        <button class="btn btn-outline-danger bt-xs"><a  href="cadabastecimento.php">Novo Abastecimento</a></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 </form>
     <?php
  try {

@@ -10,6 +10,7 @@ include  "menu.php" ;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Lista de Rotas</title>
     <script>
         function excluirRegistro(url) {
@@ -50,19 +51,33 @@ include  "menu.php" ;
 <?php
   
 ?>
-    <a href="cadrota.php">Nova Rota</a>
 
     <form method="POST">
-        Consultar por: <br>
-        <input type="radio" name="optionSearchUser" id="" value="id_rota" required>Código<br>
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Rotas</h5></div>
+                    <div class="modal-body">
+
+        <div class="form-group"> <b>Consultar por: </b> <br>
+        <input type="radio" name="optionSearchUser" id="" value="id_rota" required>Código
         <input type="radio" name="optionSearchUser" id="" value="destino" required>Destino<br>
-        Ordenar por: <br>
+        
+         <b> Ordenar por: </b> <br>
         <input type="radio" name="optionOrderUser" id="" value="id_rota" required>Código
         <input type="radio" name="optionOrderUser" id="" value="destino" required>Destino
         <br>
-        <a href="listarrota.php">Listar todos</a><br>
-        <input type="text" name="valorUser">
-        <input type="submit" value="Consultar">
+       
+        <input class="form-control" type="text" name="valorUser"> <br>
+        <input class="btn btn-outline-warning bt-xs"  type="submit" value="Consultar">
+        <button class="btn btn-outline-danger bt-xs"><a  href="cadrota.php">Nova Rota</a></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </form>
     <?php
 
@@ -95,7 +110,7 @@ include  "menu.php" ;
     ?>
             <tr>
                 <td><?php echo $linha['id_rota']; ?></td>
-                <td><?php echo $linha['km']; ?></td>
+                <td><?php echo $linha['km']. "KM"; ?></td>
                 <td><?php echo $linha['origem']; ?></td>
                 <td><?php echo $linha['destino']; ?></td>
                 <td><a href='cadrota.php?acao=editar&id_rota=<?php echo $linha['id_rota']; ?>'><img class="icon" src="img/edit.png" alt=""></a></td>

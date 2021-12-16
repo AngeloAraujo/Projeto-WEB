@@ -17,23 +17,38 @@ if ($acao == "editar") {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>''
 
 <body>
-    <a href="listarrota.php"><button>Listar</button></a><br>
-
     <form action="acaorota.php" id="form" method="post">
-        <input readonly type="text" name="id_rota" id="id_rota" value="<?php if ($acao == "editar") echo $dados['id_rota'];
-                                                                        else echo 0; ?>"><br>
-        Distância entre as cidades:
-        <input required=true type="text" name="km" id="km" value="<?php if ($acao == "editar") echo $dados['km']; ?>"><br>
-        Cidade de Origem:
-        <input required=true type="text" name="origem" id="origem" value="<?php if ($acao == "editar") echo $dados['origem']; ?>"><br>
-        Cidade de destino:
-        <input required=true type="text" name="destino" id="destino" value="<?php if ($acao == "editar") echo $dados['destino']; ?>"><br>
-        <button name="acao" value="salvar" id="acao" type="submit">Salvar</button>
-        <br>
-
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Rota</h5></div>
+                         <div class="modal-body">
+        <div class="form-group">       Código:
+        <input class="form-control"  readonly type="text" name="id_rota" id="id_rota" value="<?php if ($acao == "editar") echo $dados['id_rota'];else echo 0; ?>"><br>
+        </div>
+        <div class="form-group"> Distância entre as cidades:
+        <input class="form-control"  required=true type="text" name="km" id="km" value="<?php if ($acao == "editar") echo $dados['km']; ?>"><br>
+        </div>
+        <div class="form-group">Cidade de Origem:
+        <input class="form-control"  required=true type="text" name="origem" id="origem" value="<?php if ($acao == "editar") echo $dados['origem']; ?>"><br>
+        </div>
+        <div class="form-group">Cidade de destino:
+        <input class="form-control"  required=true type="text" name="destino" id="destino" value="<?php if ($acao == "editar") echo $dados['destino']; ?>"><br>
+        </div>
+        <div class="modal-footer">
+        <button class="btn btn-outline-success" name="acao" value="salvar" id="acao" type="submit">Salvar</button>
+        <a href="listarrota.php"><button class="btn btn-outline-primary">Listar</button></a><br>
+        </div>
+</div>    
+</div>    
+</div>    
+</div>
+</div>
     </form>
 </body>
 

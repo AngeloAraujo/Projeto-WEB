@@ -33,7 +33,7 @@
         $consumo = $dados['consumo'];
         $tanque = $dados['tanque'];
         $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-        $stmt->bindParam(':consumo', $consumo, PDO::PARAM_INT);
+        $stmt->bindParam(':consumo', $consumo, PDO::PARAM_STR);
         $stmt->bindParam(':tanque', $tanque, PDO::PARAM_INT);
         $descricao = $dados['descricao'];
         $consumo = $dados['consumo'];
@@ -47,7 +47,7 @@
         $dados = dadosForm();
 
         $pdo = Conexao::getInstance();
-        $stmt = $pdo->prepare('UPDATE modelo SET descricao = :descricao,consumo = :consumo, tanque= :tanque WHERE id_modelo = :id_modelo');
+        $stmt = $pdo->prepare('UPDATE modelo SET descricao = :descricao, consumo = :consumo, tanque= :tanque WHERE id_modelo = :id_modelo');
         $descricao = $dados['descricao'];
         $consumo = $dados['consumo'];
         $tanque = $dados['tanque'];

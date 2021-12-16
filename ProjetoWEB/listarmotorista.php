@@ -16,7 +16,8 @@ require_once "conf/Conexao.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuários</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Lista de Motorista</title>
     <script>
         function excluirRegistro(url) {
             if (confirm("Confirmar Exclusão?"))
@@ -55,21 +56,34 @@ require_once "conf/Conexao.php";
 <?php
     include  "menu.php" ;
 ?>
-    <a href="cadmotorista.php">Novo Usuário</a><br><br>
+   
 
     <form method="POST">
-        <b>Consultar por: </b><br>
-        <input type="radio" name="optionSearchUser" id="" value="id_motorista" required>Código<br>
-        <input type="radio" name="optionSearchUser" id="" value="nome" required>Nome<br>
-        <input type="radio" name="optionSearchUser" id="" value="cidade" required>Cidade<br><br>
-        <b>Ordenar por:</b><br>
-        <input type="radio" name="optionOrderUser" id="" value="id_motorista" required>Código<br>
-        <input type="radio" name="optionOrderUser" id="" value="nome" required>Nome<br>
-        <input type="radio" name="optionOrderUser" id="" value="cidade" required>Cidade<br>
-        <br>
-        <a href="alistarusuario.php">Listar todos</a><br>
-        <input type="text" name="valorUser">
-        <input type="submit" value="Consultar">
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Motorista</h5></div>
+   <div class="modal-body">
+        <div class="form-group">
+        Consultar por: 
+        <input type="radio" name="optionSearchUser" id="" value="id_motorista" required>Código
+        <input type="radio" name="optionSearchUser" id="" value="nome" required>Nome
+        <input type="radio" name="optionSearchUser" id="" value="cidade" required>Cidade
+        <div class="form-group"> Ordenar por:
+        <input type="radio" name="optionOrderUser" id="" value="id_motorista" required>Código
+        <input type="radio" name="optionOrderUser" id="" value="nome" required>Nome
+        <input type="radio" name="optionOrderUser" id="" value="cidade" required>Cidade
+    
+        <input class="form-control" type="text" name="valorUser"> <br>
+        <input class="btn btn-outline-warning bt-xs"  type="submit" value="Consultar">
+        <button class="btn btn-outline-danger bt-xs"><a  href="cadmotorista.php">Novo Modelo</a></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </form>
     <?php
 
@@ -108,7 +122,7 @@ require_once "conf/Conexao.php";
                 <td><?php echo $linha['bairro']; ?></td>
                 <td><?php echo $linha['cidade']; ?></td>
                 <td><a href='cadmotorista.php?acao=editar&id_motorista=<?php echo $linha['id_motorista']; ?>'><img class="icon" src="img/edit.png" alt=""></a></td>
-                <td><a href="javascript:excluirRegistro('acao.php?acao=excluir&id_motorista=<?php echo $linha['id_motorista']; ?>')"><img class="icon" src="img/delete.png" alt=""></a></td>
+                <td><a href="javascript:excluirRegistro('acaomotorista.php?acao=excluir&id_motorista=<?php echo $linha['id_motorista']; ?>')"><img class="icon" src="img/delete.png" alt=""></a></td>
             </tr>
         <?php } ?>
         </table>

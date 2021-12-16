@@ -45,8 +45,9 @@ function alterar($codigo)
 {
     $vet = carregarTelaParaVetor();
     $sql = 'UPDATE ' . $GLOBALS['tb_viagem'] .
-        ' SET id_motorista1 = "' . $vet['motorista'] . '"' .
-        ', id_veiculo1 = "' . $vet['veiculo'] . '"' .
+        ' SET id_motorista = "' . $vet['motorista'] . '"' .
+        ', id_veiculo = "' . $vet['veiculo'] . '"' .
+        ', id_rota = "' . $vet['rota'] . '"' .
         ' WHERE id_viagem = ' . $codigo;
     $result = mysqli_query($GLOBALS['conexao'], $sql);
     if ($result == 1)
@@ -63,14 +64,16 @@ function inserir()
     var_dump($dados);
 
     $pdo = Conexao::getInstance();
-    $stmt = $pdo->prepare('INSERT INTO viagem (id_viagem, id_motorista1, id_veiculo1) 
-                            VALUES (:id_viagem, :id_motorista, :id_veiculo)');
+    $stmt = $pdo->prepare('INSERT INTO viagem (id_viagem, id_motorista, id_veiculo, id_rota) 
+                            VALUES (:id_viagem, :id_motorista, :id_veiculo, :id_rota)');
     $codigo = $dados['id_viagem'];
-    $motorista = $dados['id_motorista'];
-    $veiculo = $dados['id_veiculo'];
+    $motorista = $dados['motorista'];
+    $veiculo = $dados['veiculo'];
+    $rota = $dados['rota'];
     $stmt->bindParam(':id_viagem', $codigo, PDO::PARAM_INT);
     $stmt->bindParam(':id_motorista', $motorista, PDO::PARAM_INT);
     $stmt->bindParam(':id_veiculo', $veiculo, PDO::PARAM_INT);
+    $stmt->bindParam(':id_rota', $rota, PDO::PARAM_INT);
 
     $stmt->execute();
 
@@ -82,8 +85,10 @@ function carregarTelaParaVetor()
 {
     $vet = array();
     $vet['id_viagem'] = $_POST["id_viagem"];
-    $vet['id_motorista1'] = $_POST["id_motorista1"];
-    $vet['id_veiculo1'] = $_POST["id_veiculo1"];
+    $vet['motorista'] = $_POST["motorista"];
+    $vet['veiculo'] = $_POST["veiculo"];
+    $vet['rota'] = $_POST["rota"];
+
     return $vet;
 }
 
@@ -94,8 +99,9 @@ function carregaBDParaVetor($codigo)
     $dados = array();
     while ($row = mysqli_fetch_array($result)) {
         $dados['id_viagem'] = $row['id_viagem'];
-        $dados['id_veiculo'] = $row['id_veiculo1'];
-        $dados['id_motorista'] = $row['id_motorista1'];
+        $dados['motorista'] = $row['id_motorista'];
+        $dados['veiculo'] = $row['id_veiculo'];
+        $dados['rota'] = $row['id_rota'];
     }
     return $dados;
 }

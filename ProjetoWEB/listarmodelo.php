@@ -10,7 +10,8 @@ include  "menu.php" ;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Lista de Modelos</title>
     <script>
         function excluirRegistro(url) {
             if (confirm("Confirmar Exclusão?"))
@@ -50,20 +51,35 @@ include  "menu.php" ;
 <?php
   
 ?>
-    <a href="cadmodelo.php">Novo Modelo</a>
+    
 
     <form method="POST">
-        Consultar por: <br>
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modelos</h5></div>
+   <div class="modal-body">
+        <div class="form-group">  Consultar por: <br>
         <input type="radio" name="optionSearchUser" id="" value="id_modelo" required>Código<br>
         <input type="radio" name="optionSearchUser" id="" value="descricao" required>Descrição<br>
-        Ordenar por: <br>
+        <div class="form-group"> Ordenar por: <br>
         <input type="radio" name="optionOrderUser" id="" value="id_modelo" required>Código
         <input type="radio" name="optionOrderUser" id="" value="descricao" required>Descrição
         <br>
-        <a href="listarmodelo.php">Listar todos</a><br>
-        <input type="text" name="valorUser">
-        <input type="submit" value="Consultar">
+        
+        <input class="form-control" type="text" name="valorUser"> <br>
+        <input class="btn btn-outline-warning bt-xs"  type="submit" value="Consultar">
+        <button class="btn btn-outline-danger bt-xs"><a  href="cadmodelo.php">Novo Modelo</a></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </form>
+   
+
     <?php
 
     try {
@@ -86,11 +102,13 @@ include  "menu.php" ;
         } else {
             $sql = ("SELECT * FROM modelo;");
         }
+        
         $pdo = Conexao::getInstance();
         $consulta = $pdo->query($sql);
         echo "<br><table><tr><th>Código</th><th>Descrição</th><th>Detalhes</th><th>Alterar</th><th>Excluir</th></tr>";
         while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
     ?>
+  
             <tr>
                 <td><?php echo $linha['id_modelo']; ?></td>
                 <td><?php echo $linha['descricao']; ?></td>

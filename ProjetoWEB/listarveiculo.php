@@ -16,6 +16,7 @@ require_once "conf/Conexao.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Lista de Usuários</title>
     <script>
         function excluirRegistro(url) {
@@ -55,19 +56,30 @@ require_once "conf/Conexao.php";
 <?php
     include  "menu.php" ;
 ?>
-    <a href="cadveiculo.php">Novo Veiculo</a><br><br>
 
     <form method="POST">
-        <b>Consultar por: </b><br>
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Veiculos</h5></div>
+   <div class="modal-body">
+        <div class="form-group"> <b>Consultar por: </b><br>
         <input type="radio" name="optionSearchUser" id="" value="id_veiculo" required>Código<br>
         <input type="radio" name="optionSearchUser" id="" value="descricao" required>Descrição<br>
-        <b>Ordenar por:</b><br>
+        <div class="form-group"> <b>Ordenar por:</b><br>
         <input type="radio" name="optionOrderUser" id="" value="id_veiculo" required>Código<br>
         <input type="radio" name="optionOrderUser" id="" value="descricao" required>Descrição<br>
         <br>
-        <a href="listarveiculo.php">Listar todos</a><br>
-        <input type="text" name="valorUser">
-        <input type="submit" value="Consultar">
+        <input class="form-control" type="text" name="valorUser"> <br>
+        <input class="btn btn-outline-warning bt-xs"  type="submit" value="Consultar">
+        <button class="btn btn-outline-danger bt-xs"><a  href="cadveiculo.php">Novo Modelo</a></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </form>
     <?php
   try {
@@ -101,7 +113,7 @@ require_once "conf/Conexao.php";
             <td><?php echo $linha['consumo']; ?></td>
             <td><?php echo $linha['tanque']; ?></td>
             <td><a href='cadveiculo.php?acao=editar&id_veiculo=<?php echo $linha['id_veiculo']; ?>'><img class="icon" src="img/edit.png" alt=""></a></td>
-            <td><a href="javascript:excluirRegistro('acao.php?acao=excluir&id_veiculo=<?php echo $linha['id_veiculo']; ?>')"><img class="icon" src="img/delete.png" alt=""></a></td>
+            <td><a href="javascript:excluirRegistro('acaoveiculo.php?acao=excluir&id_veiculo=<?php echo $linha['id_veiculo']; ?>')"><img class="icon" src="img/delete.png" alt=""></a></td>
         </tr>
     <?php } ?>
     </table>

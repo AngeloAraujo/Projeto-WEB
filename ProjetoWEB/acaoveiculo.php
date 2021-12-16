@@ -35,9 +35,9 @@ function excluir($codigo)
     $sql = "DELETE FROM veiculo WHERE id_veiculo = $codigo;";
     $result = mysqli_query($GLOBALS['conexao'], $sql);
     if ($result == 1)
-        header('location:alistardisciplina.php');
+        header('location:listarveiculo.php');
     else
-        header('location:alistardisciplina.php');
+        header('location:listarveiculo.php');
 }
 
 function alterar($codigo)

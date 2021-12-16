@@ -19,19 +19,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title><?php echo $title; ?></title>        
 </head>
 <body>
-    <a href="listarabastecimento.php"><button>Listar</button></a><br>
+    
     
     <form action="acaoabastecimento.php" id="form" method="post">
-    <input readonly  type="text" name="id_abastecimento" id="id_abastecimento" value="<?php if ($acao == "editar") echo $dados['id_abastecimento']; else echo 0; ?>"><br>
-    Preco: 
-    <input required=true   type="text" name="preco" id="preco" value="<?php if ($acao == "editar") echo $dados['preco']; ?>"><br> 
-    Litros 
-    <input required=true   type="text" name="litros" id="litros" value="<?php if ($acao == "editar") echo $dados['litros']; ?>"><br> 
+    <div id="telaproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Abastecimento</h5></div>
+   <div class="modal-body">
+             <div class="form-group"> Código
+    <input class="form-control" readonly  type="text" name="id_abastecimento" id="id_abastecimento" value="<?php if ($acao == "editar") echo $dados['id_abastecimento']; else echo 0; ?>"><br>
+    </div>
+    <div class="form-group"> Preco: 
+    <input  class="form-control"required=true   type="text" name="preco" id="preco" value="<?php if ($acao == "editar") echo $dados['preco']; ?>"><br> 
+    </div>
+    <div  class="form-control"> Litros 
+    <input class="form-control" required=true   type="text" name="litros" id="litros" value="<?php if ($acao == "editar") echo $dados['litros']; ?>"><br> 
+    </div>
+    <div class="form-group">
     <label for="">Veiculo</label>
-        <select name="veiculo" id="veiculo">
+        <select class="form-control" name="veiculo" id="veiculo">
             <?php
             $sql = "SELECT * FROM veiculo;";
             #$pdo = Conexao::getInstance();
@@ -46,9 +58,16 @@
             }
             ?>
         </select>
-        <button name="acao" value="salvar" id="acao" type="submit">Salvar</button>
-        <br>
-        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-outline-success" name="acao" value="salvar" id="acao" type="submit">Salvar</button>
+        <button class="btn btn-outline-primary"><a  href="listarabastecimento.php">Listar Todos</a></button><br>
+        </div>
+</div>    
+</div>    
+</div>    
+</div>
+</div>
     </form>
 </body>
 </html>
